@@ -9,7 +9,9 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.tasktracker.R
+import com.tasktracker.dialog.AddTaskDialog
 import com.tasktracker.repository.TaskRepository
 import kotlinx.coroutines.launch
 
@@ -20,6 +22,7 @@ class DailyViewFragment : Fragment() {
     private lateinit var tvTaskCount: TextView
     private lateinit var tvPoints: TextView
     private lateinit var rvTasks: RecyclerView
+    private lateinit var fabAddTask: FloatingActionButton
     private lateinit var taskAdapter: TaskAdapter
     
     override fun onCreateView(
@@ -45,11 +48,25 @@ class DailyViewFragment : Fragment() {
         tvTaskCount = view.findViewById(R.id.tvTaskCount)
         tvPoints = view.findViewById(R.id.tvPoints)
         rvTasks = view.findViewById(R.id.rvTasks)
+        fabAddTask = view.findViewById(R.id.fabAddTask)
         
         // Set current date
         val currentDate = java.text.SimpleDateFormat("EEEE, MMMM d, yyyy", java.util.Locale.getDefault())
             .format(java.util.Date())
         tvDate.text = currentDate
+        
+        // Setup FAB click listener
+        fabAddTask.setOnClickListener {
+            showAddTaskDialog()
+        }
+    }
+    
+    private fun showAddTaskDialog() {
+        val dialog = AddTaskDialog(requireContext()) { newTask ->
+            // Refresh task list after adding new task
+            loadTodayTasks()
+        }
+        dialog.show()
     }
     
     private fun setupRecyclerView() {
