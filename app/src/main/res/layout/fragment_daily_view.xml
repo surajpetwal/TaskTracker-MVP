@@ -18,6 +18,34 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <!-- Missed Tasks Indicator (Red Circles) -->
+    <LinearLayout
+        android:id="@+id/layoutMissedIndicator"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:layout_marginTop="4dp"
+        android:visibility="gone"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tvDate">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Missed: "
+            android:textSize="12sp"
+            android:textColor="@color/task_missed" />
+
+        <com.tasktracker.ui.MissedTasksIndicator
+            android:id="@+id/missedTasksIndicator"
+            android:layout_width="wrap_content"
+            android:layout_height="24dp"
+            android:layout_marginStart="4dp" />
+
+    </LinearLayout>
+
     <TextView
         android:id="@+id/tvTaskCount"
         android:layout_width="wrap_content"
@@ -27,7 +55,7 @@
         android:layout_marginTop="8dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tvDate" />
+        app:layout_constraintTop_toBottomOf="@id/layoutMissedIndicator" />
 
     <TextView
         android:id="@+id/tvPoints"
@@ -46,10 +74,40 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginTop="16dp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/layoutUpcoming"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/tvPoints" />
+
+    <!-- Upcoming Tasks Section -->
+    <LinearLayout
+        android:id="@+id/layoutUpcoming"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Upcoming Days"
+            android:textSize="14sp"
+            android:textStyle="bold"
+            android:layout_marginStart="4dp"
+            android:layout_marginBottom="4dp" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvUpcomingTasks"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:scrollbars="none" />
+
+    </LinearLayout>
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/fabAddTask"
@@ -57,9 +115,9 @@
         android:layout_height="wrap_content"
         android:src="@drawable/ic_add"
         android:contentDescription="Add new task"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/layoutUpcoming"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintMarginEnd="16dp"
-        app:layout_constraintMarginBottom="16dp" />
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="16dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

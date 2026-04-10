@@ -4,22 +4,30 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ProgressBar
 import android.widget.TextView
+import androidx.cardview.widget.CardView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
 import com.tasktracker.R
+import com.tasktracker.data.PointsManager
 import com.tasktracker.repository.TaskRepository
 import kotlinx.coroutines.launch
 
 class StatsViewFragment : Fragment() {
     
     private lateinit var taskRepository: TaskRepository
+    private lateinit var pointsManager: PointsManager
     private lateinit var tvTotalTasks: TextView
     private lateinit var tvCompletedTasks: TextView
     private lateinit var tvTotalPoints: TextView
     private lateinit var tvTodayPoints: TextView
     private lateinit var tvMissedTasks: TextView
     private lateinit var tvStreak: TextView
+    private lateinit var tvQuotaStatus: TextView
+    private lateinit var tvQuotaProgress: TextView
+    private lateinit var progressBarQuota: ProgressBar
+    private lateinit var cardQuota: CardView
     
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -33,6 +41,7 @@ class StatsViewFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         
         taskRepository = TaskRepository(requireContext())
+        pointsManager = PointsManager(requireContext())
         
         initViews(view)
         loadStats()
@@ -45,6 +54,12 @@ class StatsViewFragment : Fragment() {
         tvTodayPoints = view.findViewById(R.id.tvTodayPoints)
         tvMissedTasks = view.findViewById(R.id.tvMissedTasks)
         tvStreak = view.findViewById(R.id.tvStreak)
+        
+        // Quota views
+        tvQuotaStatus = view.findViewById(R.id.tvQuotaStatus)
+        tvQuotaProgress = view.findViewById(R.id.tvQuotaProgress)
+        progressBarQuota = view.findViewById(R.id.progressBarQuota)
+        cardQuota = view.findViewById(R.id.cardQuota)
     }
     
     private fun loadStats() {
@@ -62,9 +77,20 @@ class StatsViewFragment : Fragment() {
                 tvTodayPoints.text = "$todayPoints"
                 tvMissedTasks.text = "${missedTasks.size}"
                 
-                // Calculate streak (simplified - consecutive days with completed tasks)
+                // Calculate streak
                 val streak = calculateStreak(completedTasks)
                 tvStreak.text = "$streak days"
+                
+                // Update quota progress
+                val quotaProgress = pointsManager.getQuotaProgress(todayPoints)
+                progressBarQuota.progress = quotaProgress
+                tvQuotaProgress.text = "$todayPoints / ${pointsManager.getDailyQuota()} points"
+                tvQuotaStatus.text = pointsManager.getQuotaStatusMessage(todayPoints)
+                
+                // Change card color based on quota completion
+                if (pointsManager.isQuotaMet(todayPoints)) {
+                    cardQuota.setCardBackgroundColor(resources.getColor(R.color.task_completed, null))
+                }
                 
             } catch (e: Exception) {
                 e.printStackTrace()
