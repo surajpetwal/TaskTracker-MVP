@@ -1,0 +1,33 @@
+// Release build configuration for Task Tracker
+// Copy these settings to your app/build.gradle for release builds
+
+android {
+    buildTypes {
+        release {
+            minifyEnabled true
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            
+            // For Play Store release, add signing config:
+            // signingConfig signingConfigs.release
+        }
+    }
+    
+    // Uncomment and configure for signed APK:
+    // signingConfigs {
+    //     release {
+    //         storeFile file("my-key.keystore")
+    //         storePassword "******"
+    //         keyAlias "tasktracker"
+    //         keyPassword "******"
+    //     }
+    // }
+}
+
+// Build release APK:
+// ./gradlew assembleRelease
+
+// Build debug APK:
+// ./gradlew assembleDebug
+
+// Bundle for Play Store:
+// ./gradlew bundleRelease

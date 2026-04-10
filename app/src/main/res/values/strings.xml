@@ -1,3 +1,32 @@
 <resources>
     <string name="app_name">Task Tracker</string>
+    <string name="app_description">Track your daily tasks, earn points, and build streaks!</string>
+    
+    <!-- Task Management -->
+    <string name="add_task">Add Task</string>
+    <string name="edit_task">Edit Task</string>
+    <string name="delete_task">Delete Task</string>
+    <string name="task_title">Task Title</string>
+    <string name="task_description">Description (optional)</string>
+    <string name="task_points">Points</string>
+    <string name="save_task">Save Task</string>
+    <string name="cancel">Cancel</string>
+    
+    <!-- Status Messages -->
+    <string name="quota_met">Quota met!</string>
+    <string name="quota_progress">%1$d / %2$d points</string>
+    <string name="tasks_completed">%1$d/%2$d tasks completed</string>
+    <string name="points_today">%1$d points today</string>
+    <string name="streak_days">%1$d day streak</string>
+    <string name="missed_tasks">%1$d missed</string>
+    
+    <!-- Tabs -->
+    <string name="tab_daily">Today</string>
+    <string name="tab_calendar">Calendar</string>
+    <string name="tab_stats">Stats</string>
+    
+    <!-- Empty States -->
+    <string name="no_tasks_today">No tasks for today. Add one!</string>
+    <string name="no_upcoming_tasks">No upcoming tasks</string>
+    <string name="all_caught_up">All caught up! 🎉</string>
 </resources>
