@@ -38,7 +38,7 @@
             android:textSize="12sp"
             android:textColor="@color/task_missed" />
 
-        <com.tasktracker.ui.MissedTasksIndicator
+        <com.surajpetwal.tasktracker.ui.MissedTasksIndicator
             android:id="@+id/missedTasksIndicator"
             android:layout_width="wrap_content"
             android:layout_height="24dp"
