@@ -1,0 +1,9 @@
+   > Android resource linking failed
+     ERROR: /home/runner/work/TaskTracker-MVP/TaskTracker-MVP/app/src/main/res/mipmap-hdpi/ic_launcher.xml:6: AAPT: error: '108' is incompatible with attribute height (attr) dimension.
+         
+     ERROR: /home/runner/work/TaskTracker-MVP/TaskTracker-MVP/app/src/main/res/mipmap-hdpi/ic_launcher.xml:6: AAPT: error: '108' is incompatible with attribute width (attr) dimension.
+         
+     ERROR: /home/runner/work/TaskTracker-MVP/TaskTracker-MVP/app/src/main/res/mipmap-hdpi/ic_launcher_round.xml:6: AAPT: error: '108' is incompatible with attribute height (attr) dimension.
+         
+     ERROR: /home/runner/work/TaskTracker-MVP/TaskTracker-MVP/app/src/main/res/mipmap-hdpi/ic_launcher_round.xml:6: AAPT: error: '108' is incompatible with attribute width (attr) dimension.
+         
