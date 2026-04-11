@@ -1,4 +1,4 @@
-package com.tasktracker
+package com.surajpetwal.tasktracker
 
 import com.tasktracker.data.PointsManager
 import com.tasktracker.model.Task

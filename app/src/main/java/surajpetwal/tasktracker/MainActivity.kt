@@ -1,4 +1,4 @@
-package com.tasktracker
+package com.surajpetwal.tasktracker
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity

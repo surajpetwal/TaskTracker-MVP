@@ -1,4 +1,4 @@
-package com.tasktracker.dialog
+package com.surajpetwal.tasktracker.dialog
 
 import android.app.Dialog
 import android.content.Context

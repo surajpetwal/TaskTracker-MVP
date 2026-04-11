@@ -1,4 +1,4 @@
-package com.tasktracker.model
+package com.surajpetwal.tasktracker.model
 
 data class Task(
     val id: Int = 0,

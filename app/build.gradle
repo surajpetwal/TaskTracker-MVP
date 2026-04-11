@@ -4,12 +4,12 @@ plugins {
 }
 
 android {
-    namespace 'com.tasktracker'
+    namespace 'com.surajpetwal.tasktracker'
     compileSdk 34
     buildToolsVersion '34.0.0'
 
     defaultConfig {
-        applicationId "com.tasktracker"
+        applicationId "com.surajpetwal.tasktracker"
         minSdk 24
         targetSdk 34
         versionCode 1
