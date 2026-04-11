@@ -150,3 +150,4 @@ Ready for enhanced features:
 - Data export/import
 - Widget support
 - Dark mode
+# Build trigger
