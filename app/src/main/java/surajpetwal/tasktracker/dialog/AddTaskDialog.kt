@@ -9,9 +9,9 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.Toast
 import com.google.android.material.textfield.TextInputEditText
-import com.tasktracker.R
-import com.tasktracker.model.Task
-import com.tasktracker.repository.TaskRepository
+import com.surajpetwal.tasktracker.R
+import com.surajpetwal.tasktracker.model.Task
+import com.surajpetwal.tasktracker.repository.TaskRepository
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch

@@ -8,8 +8,8 @@ import android.widget.TextView
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.tasktracker.R
-import com.tasktracker.model.Task
+import com.surajpetwal.tasktracker.R
+import com.surajpetwal.tasktracker.model.Task
 
 class TaskAdapter(
     private val onTaskClick: (Task) -> Unit

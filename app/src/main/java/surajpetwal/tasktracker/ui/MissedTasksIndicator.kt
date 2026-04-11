@@ -6,7 +6,7 @@ import android.graphics.Paint
 import android.util.AttributeSet
 import android.view.View
 import androidx.core.content.ContextCompat
-import com.tasktracker.R
+import com.surajpetwal.tasktracker.R
 
 class MissedTasksIndicator @JvmOverloads constructor(
     context: Context,

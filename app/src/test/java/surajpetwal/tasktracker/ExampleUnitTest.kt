@@ -1,7 +1,7 @@
 package com.surajpetwal.tasktracker
 
-import com.tasktracker.data.PointsManager
-import com.tasktracker.model.Task
+import com.surajpetwal.tasktracker.data.PointsManager
+import com.surajpetwal.tasktracker.model.Task
 import org.junit.Assert.*
 import org.junit.Test
 

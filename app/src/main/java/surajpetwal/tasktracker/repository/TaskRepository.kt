@@ -1,8 +1,8 @@
 package com.surajpetwal.tasktracker.repository
 
 import android.content.Context
-import com.tasktracker.data.TaskDatabase
-import com.tasktracker.model.Task
+import com.surajpetwal.tasktracker.data.TaskDatabase
+import com.surajpetwal.tasktracker.model.Task
 import java.text.SimpleDateFormat
 import java.util.*
 

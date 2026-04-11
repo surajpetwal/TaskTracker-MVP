@@ -13,9 +13,9 @@ import androidx.recyclerview.widget.RecyclerView
 import java.text.SimpleDateFormat
 import java.util.*
 import com.google.android.material.floatingactionbutton.FloatingActionButton
-import com.tasktracker.R
-import com.tasktracker.dialog.AddTaskDialog
-import com.tasktracker.repository.TaskRepository
+import com.surajpetwal.tasktracker.R
+import com.surajpetwal.tasktracker.dialog.AddTaskDialog
+import com.surajpetwal.tasktracker.repository.TaskRepository
 import kotlinx.coroutines.launch
 
 class DailyViewFragment : Fragment() {

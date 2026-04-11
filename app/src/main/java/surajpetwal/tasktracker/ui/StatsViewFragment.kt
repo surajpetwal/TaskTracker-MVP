@@ -9,9 +9,9 @@ import android.widget.TextView
 import androidx.cardview.widget.CardView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
-import com.tasktracker.R
-import com.tasktracker.data.PointsManager
-import com.tasktracker.repository.TaskRepository
+import com.surajpetwal.tasktracker.R
+import com.surajpetwal.tasktracker.data.PointsManager
+import com.surajpetwal.tasktracker.repository.TaskRepository
 import kotlinx.coroutines.launch
 
 class StatsViewFragment : Fragment() {

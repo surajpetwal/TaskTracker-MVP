@@ -2,8 +2,8 @@ package com.surajpetwal.tasktracker.utils
 
 import android.content.Context
 import android.util.Log
-import com.tasktracker.model.Task
-import com.tasktracker.repository.TaskRepository
+import com.surajpetwal.tasktracker.model.Task
+import com.surajpetwal.tasktracker.repository.TaskRepository
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch

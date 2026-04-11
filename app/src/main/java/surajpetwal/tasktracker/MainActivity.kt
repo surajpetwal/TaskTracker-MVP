@@ -3,8 +3,8 @@ package com.surajpetwal.tasktracker
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.google.android.material.tabs.TabLayoutMediator
-import com.tasktracker.ui.MainPagerAdapter
-import com.tasktracker.utils.DatabaseTest
+import com.surajpetwal.tasktracker.ui.MainPagerAdapter
+import com.surajpetwal.tasktracker.utils.DatabaseTest
 
 class MainActivity : AppCompatActivity() {
     
