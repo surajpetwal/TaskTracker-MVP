@@ -98,7 +98,7 @@ class StatsViewFragment : Fragment() {
         }
     }
     
-    private fun calculateStreak(completedTasks: List<com.tasktracker.model.Task>): Int {
+    private fun calculateStreak(completedTasks: List<com.surajpetwal.tasktracker.model.Task>): Int {
         if (completedTasks.isEmpty()) return 0
         
         // Simple streak calculation - count unique days with completed tasks

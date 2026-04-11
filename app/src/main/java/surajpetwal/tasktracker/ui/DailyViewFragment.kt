@@ -155,7 +155,7 @@ class DailyViewFragment : Fragment() {
         upcomingTasksAdapter.submitList(upcomingDays)
     }
     
-    private fun toggleTaskCompletion(task: com.tasktracker.model.Task) {
+    private fun toggleTaskCompletion(task: com.surajpetwal.tasktracker.model.Task) {
         lifecycleScope.launch {
             try {
                 val updatedTask = task.copy(isCompleted = !task.isCompleted)
