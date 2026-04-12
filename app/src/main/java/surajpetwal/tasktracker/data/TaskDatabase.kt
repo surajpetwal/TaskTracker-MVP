@@ -12,6 +12,19 @@ class TaskDatabase(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME, 
     companion object {
         private const val DATABASE_VERSION = 1
         private const val DATABASE_NAME = "TaskTracker.db"
+        
+        @Volatile
+        private var INSTANCE: TaskDatabase? = null
+        
+        fun getDatabase(context: Context): TaskDatabase {
+            return INSTANCE ?: synchronized(this) {
+                INSTANCE ?: TaskDatabase(context.applicationContext).also { INSTANCE = it }
+            }
+        }
+        
+        fun taskDao(context: Context): TaskDao {
+            return TaskDao(getDatabase(context))
+        }
         private const val TABLE_TASKS = "tasks"
         
         private const val COLUMN_ID = "id"

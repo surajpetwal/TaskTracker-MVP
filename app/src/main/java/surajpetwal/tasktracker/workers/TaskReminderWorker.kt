@@ -3,7 +3,6 @@ package com.surajpetwal.tasktracker.workers
 import android.content.Context
 import androidx.work.CoroutineWorker
 import androidx.work.WorkerParameters
-import com.surajpetwal.tasktracker.data.TaskDatabase
 import com.surajpetwal.tasktracker.repository.TaskRepository
 import com.surajpetwal.tasktracker.utils.NotificationHelper
 import kotlinx.coroutines.Dispatchers
@@ -26,9 +25,7 @@ class TaskReminderWorker(
     override suspend fun doWork(): Result = withContext(Dispatchers.IO) {
         try {
             val notificationType = inputData.getString(KEY_NOTIFICATION_TYPE) ?: TYPE_TASK_REMINDER
-            val database = TaskDatabase.getDatabase(applicationContext)
-            val taskDao = database.taskDao()
-            val taskRepository = TaskRepository(taskDao)
+            val taskRepository = TaskRepository(applicationContext)
             val notificationHelper = NotificationHelper(applicationContext)
 
             when (notificationType) {
