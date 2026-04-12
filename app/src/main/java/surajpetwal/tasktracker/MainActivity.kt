@@ -58,6 +58,7 @@ class MainActivity : AppCompatActivity() {
             }
             else -> super.onOptionsItemSelected(item)
         }
+    }
     
     private fun initViews() {
         viewPager = findViewById(R.id.viewPager)
