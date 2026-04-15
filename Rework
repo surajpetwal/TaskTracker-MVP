@@ -1,177 +1,180 @@
-You are an expert Android engineer. Help me incrementally improve my existing TaskTracker MVP without breaking current functionality.
+
+You are an expert Android engineer and product-level UI designer.
+
+Transform my existing TaskTracker MVP into a visually modern, production-ready app based on a dashboard-style UI (glassmorphism + card-based layout), while preserving all features from Day 1–30.
 
 ---
 
-# 🧠 PROJECT CONTEXT
-- Existing architecture:
-  - Fragments (DailyViewFragment, StatsViewFragment, CalendarViewFragment)
-  - RecyclerView + Adapters (TaskAdapter, UpcomingTasksAdapter)
-  - Swipe gestures (TaskSwipeCallback)
-- This code is WORKING and must NOT be broken
+# 🎯 OBJECTIVE
+In ONE execution pass:
+
+- Upgrade UI to match modern dashboard design (like reference image)
+- Integrate Jetpack Compose where it improves UI
+- Maintain all existing functionality (tasks, categories, notifications, stats, filters, etc.)
+- Prepare final release build
 
 ---
 
-# 🎯 PRIMARY OBJECTIVE
+# 🧠 EXISTING FEATURES (MUST BE PRESERVED)
 
-Improve the project step-by-step with minimal disruption:
+Core:
+- Task CRUD (daily, weekly, monthly)
+- Categories + color system + filtering
+- Missed tasks indicator
+- Upcoming tasks
+- Points + streaks system
 
-1. Keep existing Fragment + Adapter system working
-2. Gradually introduce Jetpack Compose where beneficial
-3. Improve UI design toward modern dashboard (glassmorphism)
-4. Increase reusability and clean architecture
-5. Avoid full rewrites unless explicitly asked
-
----
-
-# ⚙️ STRICT RULES
-
-- DO NOT delete existing working code
-- DO NOT rewrite entire app
-- DO NOT break navigation or logic
-- DO NOT replace all fragments at once
-- ONLY improve or wrap existing features
-
----
-
-# 🧩 INCREMENTAL STRATEGY
-
-## Step 1: Improve existing UI (low risk)
-- Refactor XML layouts:
-  - consistent spacing (8dp, 16dp, 24dp)
-  - better color system
-  - rounded corners (16dp+)
-- Introduce reusable styles/themes
-
-## Step 2: Extract reusable UI patterns
-From existing code, identify and modularize:
-- Task item UI
-- Stats/metric cards
-- Indicators (e.g., missed tasks)
+Advanced:
+- Charts / stats dashboard
+- Notifications (scheduled)
+- Backup (CSV + cloud)
+- Health tracking (meds, calories, etc.)
+- Social (shared tasks, avatars)
+- AI suggestions
+- Advanced filters + search
+- Multi-language
 
 ---
 
-## Step 3: Introduce Compose gradually
+# 🎨 UI DESIGN (STRICT — MUST MATCH STYLE)
 
-- Use Compose inside fragments (ComposeView)
-- Convert small parts first:
-  - Task item → Compose
-  - Card UI → Compose
-- Keep Fragment as container
+## Overall Style
+- Modern dashboard UI
+- Glassmorphism + soft gradients
+- Clean, minimal, high spacing
 
-Example:
-- Replace RecyclerView item layout with Compose UI inside adapter OR migrate adapter later
+## Layout Structure (IMPORTANT)
 
----
+### Screen Layout (Daily Screen Example):
+1. **Top Section**
+   - Greeting / Date
+   - Summary card (progress, quota, score)
 
-## Step 4: Replace adapters selectively
+2. **Stats Row**
+   - Small cards (tasks done, streak, points)
 
-- Only convert RecyclerView → LazyColumn when stable
-- Do NOT remove adapter unless explicitly migrating that screen
+3. **Category Filter Row**
+   - Horizontal scroll chips (pill style)
+   - Color-coded
 
----
+4. **Main Task List**
+   - Card-based tasks (NOT plain list)
+   - Each task = glass card
 
-## Step 5: Screen-by-screen migration
-
-Only when ready:
-- Convert ONE Fragment → Compose screen
-- Keep others unchanged
-
----
-
-# 🎨 UI UPGRADE GUIDELINES
-
-Apply modern dashboard style gradually:
-
-## Colors
-- Primary: #FF6A3D
-- Background: dark (#0F172A) OR soft gradient (peach → coral)
-- Surface: light transparent layers
-
-## Shapes
-- Rounded corners: 16dp–24dp
-
-## Effects
-- Light glass effect using transparency
-- Subtle shadows (avoid heavy effects in XML)
+5. **Bottom Navigation**
+   - Icons (Home / Stats / Calendar / Profile)
 
 ---
 
-# 🧱 COMPONENT THINKING (IMPORTANT)
+## Component Design Rules
 
-Even if staying in XML/Fragments:
-
-- Identify reusable parts:
-  - Task item
-  - Stats card
-  - Indicator view
-
-Refactor into:
-- reusable layouts OR
-- custom views OR
-- Compose components (preferred gradually)
+### Task Card
+- Rounded corners (20dp)
+- Padding: 16dp
+- Elevation or soft shadow
+- Contains:
+  - Title
+  - Time / metadata
+  - Category chip (colored pill)
+  - Status indicator
 
 ---
 
-# 🧼 CODE QUALITY RULES
-
-- No duplicate UI code
-- Extract reusable logic
-- Improve naming clarity
-- Keep UI separate from logic where possible
-
----
-
-# 📄 DEVELOPMENT LOG (UPGRADE FORMAT)
-
-Whenever changes are made, document using:
-
-## 📅 Feature / Improvement Name
-
-### 🎯 Goal
-What improvement is being made?
-
-### ⚙️ What Changed
-- UI improvements
-- Refactors
-
-### 🧠 Key Decisions
-- Why incremental approach was used
-
-### 🧩 Architecture Notes
-- What remains unchanged
-- What was improved
-
-### 🚧 Problems Faced
-- Issues during migration
-
-### 💡 Learnings
-- What was understood
-
-### 🔜 Next Step
-- Next incremental improvement
+### Category Chip
+- Fully rounded (pill)
+- Uses category color (from CategoryManager)
+- Selected state = filled
+- Unselected = outline/light
 
 ---
 
-# 📦 OUTPUT REQUIREMENTS
-
-When responding:
-
-1. DO NOT rewrite entire files unless necessary
-2. Show ONLY the parts that need improvement
-3. Suggest minimal changes first
-4. Provide optional "next step" improvements
+### Stats Cards
+- Small glass cards
+- Icon + value + label
+- Consistent spacing
 
 ---
 
-# 🎯 FINAL GOAL
+### Background
+- Option A: Dark (#0F172A)
+- Option B: Soft gradient (peach → coral → red like reference)
 
-Evolve the app from:
-Fragment + Adapter based app
+---
 
-Into:
-Hybrid architecture (Fragments + Compose components)
+### Effects
+- Glass effect:
+  - semi-transparent surface
+  - subtle blur (Compose)
+- Avoid flat UI
 
-Eventually:
-Fully Compose-based modern UI
+---
 
-WITHOUT breaking current functionality
+# ⚙️ TECH IMPLEMENTATION
+
+## Compose Integration (TARGETED)
+- Use ComposeView inside Fragments
+- Convert:
+  - TaskItem → Compose
+  - StatsCard → Compose
+  - CategoryChip → Compose
+- Replace RecyclerView → LazyColumn ONLY if stable
+
+## Keep:
+- Fragment navigation
+- Existing ViewModels
+- Database logic
+
+---
+
+# 🧱 ARCHITECTURE RULES
+
+- Component-based UI (NOT screen-based duplication)
+- Reusable:
+  - TaskCard
+  - CategoryChip
+  - StatsCard
+- No hardcoded colors or spacing
+- Centralized theme system
+
+---
+
+# 🧼 CLEANUP
+
+- Remove unused XML (only replaced ones)
+- Remove duplicate UI logic
+- Keep code minimal and readable
+
+---
+
+# 🧪 STABILITY CHECK
+
+Ensure:
+- Task creation/edit/delete works
+- Category filtering works
+- Notifications still work
+- Charts render correctly
+- No crashes
+
+---
+
+# 📦 OUTPUT
+
+Provide:
+
+1. Final UI components (Compose + XML if needed)
+2. Integration points (ComposeView usage)
+3. Updated layouts
+4. Summary of visual improvements
+5. Files removed (if any)
+
+---
+
+# 🎯 FINAL RESULT (NON-NEGOTIABLE)
+
+The app must:
+
+- Visually look like a modern dashboard (like reference UI)
+- Use card-based layout (NOT flat lists)
+- Have strong spacing and hierarchy
+- Clearly show categories via colored chips
+- Feel like a polished Play Store app
