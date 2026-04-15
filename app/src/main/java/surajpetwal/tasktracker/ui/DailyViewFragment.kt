@@ -11,12 +11,15 @@ import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.google.android.material.chip.Chip
+import com.google.android.material.chip.ChipGroup
 import java.text.SimpleDateFormat
 import java.util.*
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.surajpetwal.tasktracker.R
 import com.surajpetwal.tasktracker.dialog.AddTaskDialog
 import com.surajpetwal.tasktracker.repository.TaskRepository
+import com.surajpetwal.tasktracker.utils.CategoryManager
 import kotlinx.coroutines.launch
 
 class DailyViewFragment : Fragment() {
@@ -32,6 +35,10 @@ class DailyViewFragment : Fragment() {
     private lateinit var missedTasksIndicator: MissedTasksIndicator
     private lateinit var rvUpcomingTasks: RecyclerView
     private lateinit var upcomingTasksAdapter: UpcomingTasksAdapter
+    
+    // Day 9: Category filter
+    private lateinit var categoryFilterGroup: ChipGroup
+    private var selectedCategory: String? = null
     
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -60,6 +67,11 @@ class DailyViewFragment : Fragment() {
         layoutMissedIndicator = view.findViewById(R.id.layoutMissedIndicator)
         missedTasksIndicator = view.findViewById(R.id.missedTasksIndicator)
         rvUpcomingTasks = view.findViewById(R.id.rvUpcomingTasks)
+        
+        // Day 9: Initialize category filter
+        val categoryFilterView = view.findViewById<View>(R.id.categoryFilter)
+        categoryFilterGroup = categoryFilterView.findViewById(R.id.chipGroupFilter)
+        setupCategoryFilter()
         
         // Set current date
         val currentDate = java.text.SimpleDateFormat("EEEE, MMMM d, yyyy", java.util.Locale.getDefault())
@@ -102,10 +114,49 @@ class DailyViewFragment : Fragment() {
         }
     }
     
+    private fun setupCategoryFilter() {
+        // Clear existing chips
+        categoryFilterGroup.removeAllViews()
+        
+        // Add "All" chip
+        val allChip = Chip(requireContext())
+        allChip.text = "All"
+        allChip.isCheckable = true
+        allChip.isChecked = true
+        allChip.setOnClickListener {
+            selectedCategory = null
+            loadTodayTasks()
+        }
+        categoryFilterGroup.addView(allChip)
+        
+        // Add category chips
+        CategoryManager.getAllCategories().forEach { category ->
+            val chip = Chip(requireContext())
+            chip.text = category
+            chip.isCheckable = true
+            chip.setChipBackgroundColorResource(CategoryManager.DEFAULT_CATEGORIES[category] ?: R.color.category_general)
+            chip.setTextColor(requireContext().getColor(android.R.color.white))
+            chip.setOnClickListener {
+                // Uncheck "All" chip when a category is selected
+                allChip.isChecked = false
+                selectedCategory = if (selectedCategory == category) null else category
+                chip.isChecked = selectedCategory == category
+                loadTodayTasks()
+            }
+            categoryFilterGroup.addView(chip)
+        }
+    }
+    
     private fun loadTodayTasks() {
         lifecycleScope.launch {
             try {
-                val todayTasks = taskRepository.getTodayTasks()
+                var todayTasks = taskRepository.getTodayTasks()
+                
+                // Day 9: Filter by selected category
+                selectedCategory?.let { category ->
+                    todayTasks = todayTasks.filter { it.category == category }
+                }
+                
                 val completedTasks = todayTasks.filter { it.isCompleted }
                 val todayPoints = taskRepository.getTodayPoints()
                 
