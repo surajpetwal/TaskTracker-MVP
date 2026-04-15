@@ -10,7 +10,7 @@ import com.surajpetwal.tasktracker.model.Task
 class TaskDatabase(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME, null, DATABASE_VERSION) {
 
     companion object {
-        private const val DATABASE_VERSION = 1
+        private const val DATABASE_VERSION = 2 // Day 9: Added category column
         private const val DATABASE_NAME = "TaskTracker.db"
         
         @Volatile
@@ -36,6 +36,7 @@ class TaskDatabase(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME, 
         private const val COLUMN_DUE_DATE = "due_date"
         private const val COLUMN_DAILY_QUOTA = "daily_quota"
         private const val COLUMN_IS_MISSED = "is_missed"
+        private const val COLUMN_CATEGORY = "category"
     }
 
     override fun onCreate(db: SQLiteDatabase) {
@@ -49,7 +50,8 @@ class TaskDatabase(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME, 
                 $COLUMN_CREATED_DATE TEXT NOT NULL,
                 $COLUMN_DUE_DATE TEXT,
                 $COLUMN_DAILY_QUOTA INTEGER DEFAULT 10,
-                $COLUMN_IS_MISSED INTEGER DEFAULT 0
+                $COLUMN_IS_MISSED INTEGER DEFAULT 0,
+                $COLUMN_CATEGORY TEXT DEFAULT 'General'
             )
         """.trimIndent()
         
@@ -57,8 +59,10 @@ class TaskDatabase(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME, 
     }
 
     override fun onUpgrade(db: SQLiteDatabase, oldVersion: Int, newVersion: Int) {
-        db.execSQL("DROP TABLE IF EXISTS $TABLE_TASKS")
-        onCreate(db)
+        if (oldVersion < 2) {
+            // Day 9: Add category column for existing databases
+            db.execSQL("ALTER TABLE $TABLE_TASKS ADD COLUMN $COLUMN_CATEGORY TEXT DEFAULT 'General'")
+        }
     }
 
     fun insertTask(task: Task): Long {
@@ -72,6 +76,7 @@ class TaskDatabase(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME, 
             put(COLUMN_DUE_DATE, task.dueDate)
             put(COLUMN_DAILY_QUOTA, task.dailyQuota)
             put(COLUMN_IS_MISSED, if (task.isMissed) 1 else 0)
+            put(COLUMN_CATEGORY, task.category)
         }
         
         return db.insert(TABLE_TASKS, null, contentValues)
@@ -98,6 +103,7 @@ class TaskDatabase(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME, 
         var dueDate: String?
         var dailyQuota: Int
         var isMissed: Boolean
+        var category: String
         
         if (cursor.moveToFirst()) {
             do {
@@ -110,6 +116,7 @@ class TaskDatabase(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME, 
                 dueDate = cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_DUE_DATE))
                 dailyQuota = cursor.getInt(cursor.getColumnIndexOrThrow(COLUMN_DAILY_QUOTA))
                 isMissed = cursor.getInt(cursor.getColumnIndexOrThrow(COLUMN_IS_MISSED)) == 1
+                category = cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_CATEGORY)) ?: "General"
                 
                 tasks.add(
                     Task(
@@ -121,7 +128,8 @@ class TaskDatabase(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME, 
                         createdDate = createdDate,
                         dueDate = dueDate,
                         dailyQuota = dailyQuota,
-                        isMissed = isMissed
+                        isMissed = isMissed,
+                        category = category
                     )
                 )
             } while (cursor.moveToNext())
@@ -141,6 +149,7 @@ class TaskDatabase(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME, 
             put(COLUMN_DUE_DATE, task.dueDate)
             put(COLUMN_DAILY_QUOTA, task.dailyQuota)
             put(COLUMN_IS_MISSED, if (task.isMissed) 1 else 0)
+            put(COLUMN_CATEGORY, task.category)
         }
         
         return db.update(TABLE_TASKS, contentValues, "$COLUMN_ID = ?", arrayOf(task.id.toString()))
@@ -176,6 +185,7 @@ class TaskDatabase(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME, 
                 val dueDate = cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_DUE_DATE))
                 val dailyQuota = cursor.getInt(cursor.getColumnIndexOrThrow(COLUMN_DAILY_QUOTA))
                 val isMissed = cursor.getInt(cursor.getColumnIndexOrThrow(COLUMN_IS_MISSED)) == 1
+                val category = cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_CATEGORY)) ?: "General"
                 
                 tasks.add(
                     Task(
@@ -187,7 +197,8 @@ class TaskDatabase(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME, 
                         createdDate = createdDate,
                         dueDate = dueDate,
                         dailyQuota = dailyQuota,
-                        isMissed = isMissed
+                        isMissed = isMissed,
+                        category = category
                     )
                 )
             } while (cursor.moveToNext())
@@ -222,6 +233,7 @@ class TaskDatabase(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME, 
                 val dueDate = cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_DUE_DATE))
                 val dailyQuota = cursor.getInt(cursor.getColumnIndexOrThrow(COLUMN_DAILY_QUOTA))
                 val isMissed = cursor.getInt(cursor.getColumnIndexOrThrow(COLUMN_IS_MISSED)) == 1
+                val category = cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_CATEGORY)) ?: "General"
                 
                 tasks.add(
                     Task(
@@ -233,7 +245,8 @@ class TaskDatabase(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME, 
                         createdDate = createdDate,
                         dueDate = dueDate,
                         dailyQuota = dailyQuota,
-                        isMissed = isMissed
+                        isMissed = isMissed,
+                        category = category
                     )
                 )
             } while (cursor.moveToNext())

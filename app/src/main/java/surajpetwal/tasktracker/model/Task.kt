@@ -9,5 +9,6 @@ data class Task(
     val createdDate: String = "",
     val dueDate: String? = null,
     val dailyQuota: Int = 10,
-    val isMissed: Boolean = false
+    val isMissed: Boolean = false,
+    val category: String = "General" // Day 9: Added category support
 )
