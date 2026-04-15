@@ -86,6 +86,28 @@ This document tracks all development progress across all branches.
 
 ---
 
+## 🚀 New Development Roadmap (2025-04-16)
+Based on Rework file - shifting to incremental UI improvements:
+
+### Phase 1: UI Foundation (Days 10-12)
+- Day 10: Spacing, colors, rounded corners
+- Day 11: Component refactoring 
+- Day 12: Visual effects (glassmorphism)
+
+### Phase 2: Gradual Compose (Days 13-15)
+- Day 13: First Compose component (task item)
+- Day 14: Compose cards & metrics
+- Day 15: Mixed architecture
+
+### Phase 3: Selective Migration (Days 16-18)
+- Day 16: RecyclerView to LazyColumn
+- Day 17: First fragment migration
+- Day 18: Architecture cleanup
+
+See `DEVELOPMENT_ROADMAP.md` for complete details.
+
+---
+
 ## Branch: `main` (Test/Debug)
 **Status:** Test/Debug Branch  
 **Purpose:** Main branch serves as test/debug branch, not production
