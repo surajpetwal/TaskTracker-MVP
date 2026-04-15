@@ -1,16 +1,49 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="purple_200">#FFBB86FC</color>
-    <color name="purple_500">#FF6200EE</color>
-    <color name="purple_700">#FF3700B3</color>
-    <color name="teal_200">#FF03DAC5</color>
-    <color name="teal_700">#FF018786</color>
+    <!-- Day 10: Modern Dashboard Color System -->
+    <!-- Primary Colors -->
+    <color name="primary">#FF6A3D</color>
+    <color name="primary_dark">#FF5722</color>
+    <color name="primary_light">#FF8A65</color>
+    
+    <!-- Background Colors -->
+    <color name="background_primary">#FF0F172A</color>
+    <color name="background_secondary">#FF1E293B</color>
+    <color name="background_surface">#BFFFFFFF</color>
+    <color name="background_card">#E6FFFFFF</color>
+    
+    <!-- Text Colors -->
+    <color name="text_primary">#FFFFFFFF</color>
+    <color name="text_secondary">#B3FFFFFF</color>
+    <color name="text_hint">#80FFFFFF</color>
+    <color name="text_on_primary">#FFFFFFFF</color>
+    
+    <!-- Status Colors -->
+    <color name="success">#FF4CAF50</color>
+    <color name="warning">#FFFF9800</color>
+    <color name="error">#FFF44336</color>
+    <color name="info">#FF2196F3</color>
+    
+    <!-- Surface Colors -->
+    <color name="surface">#E6FFFFFF</color>
+    <color name="surface_variant">#CCFFFFFF</color>
+    <color name="outline">#40FFFFFF</color>
+    
+    <!-- Legacy Colors (for backward compatibility) -->
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
-    <color name="primary">#FF2196F3</color>
-    <color name="primary_dark">#FF1976D2</color>
-    <color name="accent">#FFFF4081</color>
+    <color name="accent">#FF6A3D</color>
     <color name="task_completed">#FF4CAF50</color>
     <color name="task_missed">#FFF44336</color>
     <color name="task_pending">#FFFF9800</color>
+    
+    <!-- Day 9: Category Colors (Updated for better contrast) -->
+    <color name="category_general">#FF9E9E9E</color>
+    <color name="category_work">#FF2196F3</color>
+    <color name="category_personal">#FF9C27B0</color>
+    <color name="category_health">#FF4CAF50</color>
+    <color name="category_study">#FFFF9800</color>
+    <color name="category_shopping">#FFE91E63</color>
+    <color name="category_finance">#FF009688</color>
+    <color name="category_social">#FFFF5722</color>
 </resources>
