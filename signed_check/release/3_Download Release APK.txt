@@ -1,0 +1,19 @@
+﻿2026-04-15T14:16:28.5429647Z ##[group]Run actions/download-artifact@v4
+2026-04-15T14:16:28.5429936Z with:
+2026-04-15T14:16:28.5430120Z   name: release-apk
+2026-04-15T14:16:28.5430324Z   path: ./apk
+2026-04-15T14:16:28.5430514Z   merge-multiple: false
+2026-04-15T14:16:28.5430769Z   repository: surajpetwal/TaskTracker-MVP
+2026-04-15T14:16:28.5431020Z   run-id: 24459575409
+2026-04-15T14:16:28.5431217Z ##[endgroup]
+2026-04-15T14:16:28.7439724Z Downloading single artifact
+2026-04-15T14:16:28.9199407Z Preparing to download the following artifacts:
+2026-04-15T14:16:28.9200401Z - release-apk (ID: 6452590111, Size: 4172104, Expected Digest: sha256:5eb80a4e2becb734654ab5b3e2751d7d83ebb6c582fe312f0b5eaa5dbb29a20f)
+2026-04-15T14:16:29.0272016Z Redirecting to blob download url: https://productionresultssa6.blob.core.windows.net/actions-results/bcea7954-0b84-486a-b4fc-d47a4d92e92d/workflow-job-run-483d28e8-1ba9-5faf-ba5d-716be8729ddc/artifacts/a8f3d9dba2d6f10a92a50ab7ea364aa6addded90be1b37f8abc8c7c3843b9ae1.zip
+2026-04-15T14:16:29.0274516Z Starting download of artifact to: /home/runner/work/TaskTracker-MVP/TaskTracker-MVP/apk
+2026-04-15T14:16:29.2021736Z (node:2293) [DEP0005] DeprecationWarning: Buffer() is deprecated due to security and usability issues. Please use the Buffer.alloc(), Buffer.allocUnsafe(), or Buffer.from() methods instead.
+2026-04-15T14:16:29.2023249Z (Use `node --trace-deprecation ...` to show where the warning was created)
+2026-04-15T14:16:29.5867182Z SHA256 digest of downloaded artifact is 5eb80a4e2becb734654ab5b3e2751d7d83ebb6c582fe312f0b5eaa5dbb29a20f
+2026-04-15T14:16:29.5868134Z Artifact download completed successfully.
+2026-04-15T14:16:29.5868583Z Total of 1 artifact(s) downloaded
+2026-04-15T14:16:29.5874567Z Download artifact has finished successfully

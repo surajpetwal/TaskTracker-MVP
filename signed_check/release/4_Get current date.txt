@@ -1,0 +1,4 @@
+﻿2026-04-15T14:16:29.5988591Z ##[group]Run echo "date=$(date +'%Y-%m-%d-%H%M')" >> $GITHUB_OUTPUT
+2026-04-15T14:16:29.5989155Z [36;1mecho "date=$(date +'%Y-%m-%d-%H%M')" >> $GITHUB_OUTPUT[0m
+2026-04-15T14:16:29.6015505Z shell: /usr/bin/bash -e {0}
+2026-04-15T14:16:29.6015793Z ##[endgroup]

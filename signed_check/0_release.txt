@@ -1,0 +1,280 @@
+﻿2026-04-15T14:16:17.9343297Z Current runner version: '2.333.1'
+2026-04-15T14:16:17.9373123Z ##[group]Runner Image Provisioner
+2026-04-15T14:16:17.9373899Z Hosted Compute Agent
+2026-04-15T14:16:17.9374702Z Version: 20260213.493
+2026-04-15T14:16:17.9375263Z Commit: 5c115507f6dd24b8de37d8bbe0bb4509d0cc0fa3
+2026-04-15T14:16:17.9376094Z Build Date: 2026-02-13T00:28:41Z
+2026-04-15T14:16:17.9376714Z Worker ID: {d6e5cd61-b06b-4828-9769-5ade491129c8}
+2026-04-15T14:16:17.9377416Z Azure Region: northcentralus
+2026-04-15T14:16:17.9378092Z ##[endgroup]
+2026-04-15T14:16:17.9379451Z ##[group]Operating System
+2026-04-15T14:16:17.9380038Z Ubuntu
+2026-04-15T14:16:17.9380599Z 24.04.4
+2026-04-15T14:16:17.9381130Z LTS
+2026-04-15T14:16:17.9381563Z ##[endgroup]
+2026-04-15T14:16:17.9382120Z ##[group]Runner Image
+2026-04-15T14:16:17.9382639Z Image: ubuntu-24.04
+2026-04-15T14:16:17.9383168Z Version: 20260406.80.1
+2026-04-15T14:16:17.9384614Z Included Software: https://github.com/actions/runner-images/blob/ubuntu24/20260406.80/images/ubuntu/Ubuntu2404-Readme.md
+2026-04-15T14:16:17.9386010Z Image Release: https://github.com/actions/runner-images/releases/tag/ubuntu24%2F20260406.80
+2026-04-15T14:16:17.9386949Z ##[endgroup]
+2026-04-15T14:16:17.9388029Z ##[group]GITHUB_TOKEN Permissions
+2026-04-15T14:16:17.9390253Z Contents: read
+2026-04-15T14:16:17.9390834Z Metadata: read
+2026-04-15T14:16:17.9391311Z Packages: read
+2026-04-15T14:16:17.9391868Z ##[endgroup]
+2026-04-15T14:16:17.9393880Z Secret source: Actions
+2026-04-15T14:16:17.9395103Z Prepare workflow directory
+2026-04-15T14:16:17.9728156Z Prepare all required actions
+2026-04-15T14:16:17.9765763Z Getting action download info
+2026-04-15T14:16:18.4438406Z Download action repository 'actions/checkout@v4' (SHA:34e114876b0b11c390a56381ad16ebd13914f8d5)
+2026-04-15T14:16:18.5825924Z Download action repository 'actions/download-artifact@v4' (SHA:d3f86a106a0bac45b974a628896c90dbdf5c8093)
+2026-04-15T14:16:19.0813159Z Download action repository 'actions/create-release@v1' (SHA:0cb9c9b65d5d1901c1f53e5e66eaf4afd303e70e)
+2026-04-15T14:16:19.4968064Z Download action repository 'actions/upload-release-asset@v1' (SHA:e8f9f06c4b078e705bd2ea027f0926603fc9b4d5)
+2026-04-15T14:16:20.0306794Z Complete job name: release
+2026-04-15T14:16:20.1158512Z ##[group]Run actions/checkout@v4
+2026-04-15T14:16:20.1159770Z with:
+2026-04-15T14:16:20.1160569Z   repository: surajpetwal/TaskTracker-MVP
+2026-04-15T14:16:20.1161913Z   token: ***
+2026-04-15T14:16:20.1162663Z   ssh-strict: true
+2026-04-15T14:16:20.1163433Z   ssh-user: git
+2026-04-15T14:16:20.1164457Z   persist-credentials: true
+2026-04-15T14:16:20.1165368Z   clean: true
+2026-04-15T14:16:20.1166153Z   sparse-checkout-cone-mode: true
+2026-04-15T14:16:20.1167107Z   fetch-depth: 1
+2026-04-15T14:16:20.1167869Z   fetch-tags: false
+2026-04-15T14:16:20.1168665Z   show-progress: true
+2026-04-15T14:16:20.1169451Z   lfs: false
+2026-04-15T14:16:20.1170182Z   submodules: false
+2026-04-15T14:16:20.1170995Z   set-safe-directory: true
+2026-04-15T14:16:20.1172082Z ##[endgroup]
+2026-04-15T14:16:20.2276205Z Syncing repository: surajpetwal/TaskTracker-MVP
+2026-04-15T14:16:20.2278872Z ##[group]Getting Git version info
+2026-04-15T14:16:20.2280335Z Working directory is '/home/runner/work/TaskTracker-MVP/TaskTracker-MVP'
+2026-04-15T14:16:20.2282318Z [command]/usr/bin/git version
+2026-04-15T14:16:20.3477140Z git version 2.53.0
+2026-04-15T14:16:20.3509575Z ##[endgroup]
+2026-04-15T14:16:20.3528192Z Temporarily overriding HOME='/home/runner/work/_temp/99b7ad32-be45-47f2-961c-e6cd3676f7b3' before making global git config changes
+2026-04-15T14:16:20.3531025Z Adding repository directory to the temporary git global config as a safe directory
+2026-04-15T14:16:20.3542477Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/TaskTracker-MVP/TaskTracker-MVP
+2026-04-15T14:16:20.3903776Z Deleting the contents of '/home/runner/work/TaskTracker-MVP/TaskTracker-MVP'
+2026-04-15T14:16:20.3908672Z ##[group]Initializing the repository
+2026-04-15T14:16:20.3913175Z [command]/usr/bin/git init /home/runner/work/TaskTracker-MVP/TaskTracker-MVP
+2026-04-15T14:16:20.4001152Z hint: Using 'master' as the name for the initial branch. This default branch name
+2026-04-15T14:16:20.4004439Z hint: will change to "main" in Git 3.0. To configure the initial branch name
+2026-04-15T14:16:20.4011863Z hint: to use in all of your new repositories, which will suppress this warning,
+2026-04-15T14:16:20.4014565Z hint: call:
+2026-04-15T14:16:20.4015631Z hint:
+2026-04-15T14:16:20.4016861Z hint: 	git config --global init.defaultBranch <name>
+2026-04-15T14:16:20.4018452Z hint:
+2026-04-15T14:16:20.4019942Z hint: Names commonly chosen instead of 'master' are 'main', 'trunk' and
+2026-04-15T14:16:20.4022476Z hint: 'development'. The just-created branch can be renamed via this command:
+2026-04-15T14:16:20.4024941Z hint:
+2026-04-15T14:16:20.4025962Z hint: 	git branch -m <name>
+2026-04-15T14:16:20.4027164Z hint:
+2026-04-15T14:16:20.4028310Z hint: Disable this message with "git config set advice.defaultBranchName false"
+2026-04-15T14:16:20.4030383Z Initialized empty Git repository in /home/runner/work/TaskTracker-MVP/TaskTracker-MVP/.git/
+2026-04-15T14:16:20.4033722Z [command]/usr/bin/git remote add origin https://github.com/surajpetwal/TaskTracker-MVP
+2026-04-15T14:16:20.4065344Z ##[endgroup]
+2026-04-15T14:16:20.4067183Z ##[group]Disabling automatic garbage collection
+2026-04-15T14:16:20.4068965Z [command]/usr/bin/git config --local gc.auto 0
+2026-04-15T14:16:20.4106460Z ##[endgroup]
+2026-04-15T14:16:20.4108442Z ##[group]Setting up auth
+2026-04-15T14:16:20.4112221Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+2026-04-15T14:16:20.4146428Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2026-04-15T14:16:20.5057681Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2026-04-15T14:16:20.5088382Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2026-04-15T14:16:20.5317914Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+2026-04-15T14:16:20.5363013Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+2026-04-15T14:16:20.5617306Z [command]/usr/bin/git config --local http.https://github.com/.extraheader AUTHORIZATION: basic ***
+2026-04-15T14:16:20.7417085Z ##[endgroup]
+2026-04-15T14:16:20.7419786Z ##[group]Fetching the repository
+2026-04-15T14:16:20.7424445Z [command]/usr/bin/git -c protocol.version=2 fetch --no-tags --prune --no-recurse-submodules --depth=1 origin +ee315e18a71fd7cf2138423d6c7cca85e6a0080e:refs/remotes/origin/day-9-categories
+2026-04-15T14:16:26.3570173Z From https://github.com/surajpetwal/TaskTracker-MVP
+2026-04-15T14:16:26.3571102Z  * [new ref]         ee315e18a71fd7cf2138423d6c7cca85e6a0080e -> origin/day-9-categories
+2026-04-15T14:16:26.3601915Z ##[endgroup]
+2026-04-15T14:16:26.3602566Z ##[group]Determining the checkout info
+2026-04-15T14:16:26.3605512Z ##[endgroup]
+2026-04-15T14:16:26.3610918Z [command]/usr/bin/git sparse-checkout disable
+2026-04-15T14:16:26.3650034Z [command]/usr/bin/git config --local --unset-all extensions.worktreeConfig
+2026-04-15T14:16:26.3675686Z ##[group]Checking out the ref
+2026-04-15T14:16:26.3681170Z [command]/usr/bin/git checkout --progress --force -B day-9-categories refs/remotes/origin/day-9-categories
+2026-04-15T14:16:27.5545794Z Updating files:   3% (350/11477)
+2026-04-15T14:16:27.8797338Z Updating files:   4% (460/11477)
+2026-04-15T14:16:27.8840088Z Updating files:   5% (574/11477)
+2026-04-15T14:16:27.8882465Z Updating files:   6% (689/11477)
+2026-04-15T14:16:27.8922434Z Updating files:   7% (804/11477)
+2026-04-15T14:16:27.8961129Z Updating files:   8% (919/11477)
+2026-04-15T14:16:27.9001661Z Updating files:   9% (1033/11477)
+2026-04-15T14:16:27.9041953Z Updating files:  10% (1148/11477)
+2026-04-15T14:16:27.9081211Z Updating files:  11% (1263/11477)
+2026-04-15T14:16:27.9125064Z Updating files:  12% (1378/11477)
+2026-04-15T14:16:27.9165721Z Updating files:  13% (1493/11477)
+2026-04-15T14:16:27.9204682Z Updating files:  14% (1607/11477)
+2026-04-15T14:16:27.9247331Z Updating files:  15% (1722/11477)
+2026-04-15T14:16:27.9288724Z Updating files:  16% (1837/11477)
+2026-04-15T14:16:27.9328301Z Updating files:  17% (1952/11477)
+2026-04-15T14:16:27.9368860Z Updating files:  18% (2066/11477)
+2026-04-15T14:16:27.9407712Z Updating files:  19% (2181/11477)
+2026-04-15T14:16:27.9444908Z Updating files:  20% (2296/11477)
+2026-04-15T14:16:27.9481634Z Updating files:  21% (2411/11477)
+2026-04-15T14:16:27.9522154Z Updating files:  22% (2525/11477)
+2026-04-15T14:16:27.9560218Z Updating files:  23% (2640/11477)
+2026-04-15T14:16:27.9601522Z Updating files:  24% (2755/11477)
+2026-04-15T14:16:27.9638510Z Updating files:  25% (2870/11477)
+2026-04-15T14:16:27.9674787Z Updating files:  26% (2985/11477)
+2026-04-15T14:16:27.9713745Z Updating files:  27% (3099/11477)
+2026-04-15T14:16:27.9752793Z Updating files:  28% (3214/11477)
+2026-04-15T14:16:27.9792537Z Updating files:  29% (3329/11477)
+2026-04-15T14:16:27.9831144Z Updating files:  30% (3444/11477)
+2026-04-15T14:16:27.9871325Z Updating files:  31% (3558/11477)
+2026-04-15T14:16:27.9909320Z Updating files:  32% (3673/11477)
+2026-04-15T14:16:27.9949090Z Updating files:  33% (3788/11477)
+2026-04-15T14:16:27.9987785Z Updating files:  34% (3903/11477)
+2026-04-15T14:16:28.0035471Z Updating files:  35% (4017/11477)
+2026-04-15T14:16:28.0089789Z Updating files:  36% (4132/11477)
+2026-04-15T14:16:28.0145519Z Updating files:  37% (4247/11477)
+2026-04-15T14:16:28.0198637Z Updating files:  38% (4362/11477)
+2026-04-15T14:16:28.0382640Z Updating files:  39% (4477/11477)
+2026-04-15T14:16:28.0420321Z Updating files:  40% (4591/11477)
+2026-04-15T14:16:28.0462758Z Updating files:  41% (4706/11477)
+2026-04-15T14:16:28.0504777Z Updating files:  42% (4821/11477)
+2026-04-15T14:16:28.0545156Z Updating files:  43% (4936/11477)
+2026-04-15T14:16:28.0586745Z Updating files:  44% (5050/11477)
+2026-04-15T14:16:28.0628256Z Updating files:  45% (5165/11477)
+2026-04-15T14:16:28.0667123Z Updating files:  46% (5280/11477)
+2026-04-15T14:16:28.0710680Z Updating files:  47% (5395/11477)
+2026-04-15T14:16:28.0750307Z Updating files:  48% (5509/11477)
+2026-04-15T14:16:28.0791166Z Updating files:  49% (5624/11477)
+2026-04-15T14:16:28.0831277Z Updating files:  50% (5739/11477)
+2026-04-15T14:16:28.0871977Z Updating files:  51% (5854/11477)
+2026-04-15T14:16:28.0910189Z Updating files:  52% (5969/11477)
+2026-04-15T14:16:28.0955589Z Updating files:  53% (6083/11477)
+2026-04-15T14:16:28.0996308Z Updating files:  54% (6198/11477)
+2026-04-15T14:16:28.1046980Z Updating files:  55% (6313/11477)
+2026-04-15T14:16:28.1086145Z Updating files:  56% (6428/11477)
+2026-04-15T14:16:28.1125499Z Updating files:  57% (6542/11477)
+2026-04-15T14:16:28.1165890Z Updating files:  58% (6657/11477)
+2026-04-15T14:16:28.1206489Z Updating files:  59% (6772/11477)
+2026-04-15T14:16:28.1248401Z Updating files:  60% (6887/11477)
+2026-04-15T14:16:28.1288842Z Updating files:  61% (7001/11477)
+2026-04-15T14:16:28.1330182Z Updating files:  62% (7116/11477)
+2026-04-15T14:16:28.1378821Z Updating files:  63% (7231/11477)
+2026-04-15T14:16:28.1425107Z Updating files:  64% (7346/11477)
+2026-04-15T14:16:28.1470213Z Updating files:  65% (7461/11477)
+2026-04-15T14:16:28.1514470Z Updating files:  66% (7575/11477)
+2026-04-15T14:16:28.1555836Z Updating files:  67% (7690/11477)
+2026-04-15T14:16:28.1598761Z Updating files:  68% (7805/11477)
+2026-04-15T14:16:28.1642769Z Updating files:  69% (7920/11477)
+2026-04-15T14:16:28.1691565Z Updating files:  70% (8034/11477)
+2026-04-15T14:16:28.1738555Z Updating files:  71% (8149/11477)
+2026-04-15T14:16:28.1934505Z Updating files:  72% (8264/11477)
+2026-04-15T14:16:28.2231389Z Updating files:  73% (8379/11477)
+2026-04-15T14:16:28.2559865Z Updating files:  74% (8493/11477)
+2026-04-15T14:16:28.2641918Z Updating files:  75% (8608/11477)
+2026-04-15T14:16:28.2717674Z Updating files:  76% (8723/11477)
+2026-04-15T14:16:28.2798132Z Updating files:  77% (8838/11477)
+2026-04-15T14:16:28.2875501Z Updating files:  78% (8953/11477)
+2026-04-15T14:16:28.2956252Z Updating files:  79% (9067/11477)
+2026-04-15T14:16:28.3035414Z Updating files:  80% (9182/11477)
+2026-04-15T14:16:28.3114874Z Updating files:  81% (9297/11477)
+2026-04-15T14:16:28.3237627Z Updating files:  82% (9412/11477)
+2026-04-15T14:16:28.3292192Z Updating files:  83% (9526/11477)
+2026-04-15T14:16:28.3371202Z Updating files:  84% (9641/11477)
+2026-04-15T14:16:28.3451869Z Updating files:  85% (9756/11477)
+2026-04-15T14:16:28.3530452Z Updating files:  86% (9871/11477)
+2026-04-15T14:16:28.3608957Z Updating files:  87% (9985/11477)
+2026-04-15T14:16:28.3689412Z Updating files:  88% (10100/11477)
+2026-04-15T14:16:28.3769912Z Updating files:  89% (10215/11477)
+2026-04-15T14:16:28.3809600Z Updating files:  90% (10330/11477)
+2026-04-15T14:16:28.3849229Z Updating files:  90% (10388/11477)
+2026-04-15T14:16:28.3927691Z Updating files:  91% (10445/11477)
+2026-04-15T14:16:28.4007029Z Updating files:  92% (10559/11477)
+2026-04-15T14:16:28.4083688Z Updating files:  93% (10674/11477)
+2026-04-15T14:16:28.4163455Z Updating files:  94% (10789/11477)
+2026-04-15T14:16:28.4365996Z Updating files:  95% (10904/11477)
+2026-04-15T14:16:28.4567601Z Updating files:  96% (11018/11477)
+2026-04-15T14:16:28.4755027Z Updating files:  97% (11133/11477)
+2026-04-15T14:16:28.4864000Z Updating files:  98% (11248/11477)
+2026-04-15T14:16:28.4917917Z Updating files:  99% (11363/11477)
+2026-04-15T14:16:28.4918349Z Updating files: 100% (11477/11477)
+2026-04-15T14:16:28.4918735Z Updating files: 100% (11477/11477), done.
+2026-04-15T14:16:28.5065491Z Switched to a new branch 'day-9-categories'
+2026-04-15T14:16:28.5068381Z branch 'day-9-categories' set up to track 'origin/day-9-categories'.
+2026-04-15T14:16:28.5164434Z ##[endgroup]
+2026-04-15T14:16:28.5204265Z [command]/usr/bin/git log -1 --format=%H
+2026-04-15T14:16:28.5226774Z ee315e18a71fd7cf2138423d6c7cca85e6a0080e
+2026-04-15T14:16:28.5429656Z ##[group]Run actions/download-artifact@v4
+2026-04-15T14:16:28.5429939Z with:
+2026-04-15T14:16:28.5430123Z   name: release-apk
+2026-04-15T14:16:28.5430327Z   path: ./apk
+2026-04-15T14:16:28.5430517Z   merge-multiple: false
+2026-04-15T14:16:28.5430771Z   repository: surajpetwal/TaskTracker-MVP
+2026-04-15T14:16:28.5431022Z   run-id: 24459575409
+2026-04-15T14:16:28.5431219Z ##[endgroup]
+2026-04-15T14:16:28.7439760Z Downloading single artifact
+2026-04-15T14:16:28.9199434Z Preparing to download the following artifacts:
+2026-04-15T14:16:28.9200408Z - release-apk (ID: 6452590111, Size: 4172104, Expected Digest: sha256:5eb80a4e2becb734654ab5b3e2751d7d83ebb6c582fe312f0b5eaa5dbb29a20f)
+2026-04-15T14:16:29.0272042Z Redirecting to blob download url: https://productionresultssa6.blob.core.windows.net/actions-results/bcea7954-0b84-486a-b4fc-d47a4d92e92d/workflow-job-run-483d28e8-1ba9-5faf-ba5d-716be8729ddc/artifacts/a8f3d9dba2d6f10a92a50ab7ea364aa6addded90be1b37f8abc8c7c3843b9ae1.zip
+2026-04-15T14:16:29.0274617Z Starting download of artifact to: /home/runner/work/TaskTracker-MVP/TaskTracker-MVP/apk
+2026-04-15T14:16:29.2021776Z (node:2293) [DEP0005] DeprecationWarning: Buffer() is deprecated due to security and usability issues. Please use the Buffer.alloc(), Buffer.allocUnsafe(), or Buffer.from() methods instead.
+2026-04-15T14:16:29.2023260Z (Use `node --trace-deprecation ...` to show where the warning was created)
+2026-04-15T14:16:29.5867225Z SHA256 digest of downloaded artifact is 5eb80a4e2becb734654ab5b3e2751d7d83ebb6c582fe312f0b5eaa5dbb29a20f
+2026-04-15T14:16:29.5868139Z Artifact download completed successfully.
+2026-04-15T14:16:29.5868587Z Total of 1 artifact(s) downloaded
+2026-04-15T14:16:29.5874580Z Download artifact has finished successfully
+2026-04-15T14:16:29.5988604Z ##[group]Run echo "date=$(date +'%Y-%m-%d-%H%M')" >> $GITHUB_OUTPUT
+2026-04-15T14:16:29.5989158Z [36;1mecho "date=$(date +'%Y-%m-%d-%H%M')" >> $GITHUB_OUTPUT[0m
+2026-04-15T14:16:29.6015516Z shell: /usr/bin/bash -e {0}
+2026-04-15T14:16:29.6015796Z ##[endgroup]
+2026-04-15T14:16:29.6193626Z ##[group]Run actions/create-release@v1
+2026-04-15T14:16:29.6193906Z with:
+2026-04-15T14:16:29.6194432Z   tag_name: v2026-04-15-1416
+2026-04-15T14:16:29.6194716Z   release_name: Task Tracker Build 2026-04-15-1416
+2026-04-15T14:16:29.6195891Z   body: Automated build of Task Tracker APK
+
+## Features
+- Daily task management
+- Points and quota system
+- Streak tracking
+- Calendar view
+- Statistics dashboard
+
+## Installation
+Download the APK and install on your Android device.
+
+Note: This is an unsigned release APK. For production, sign with your own keystore.
+
+2026-04-15T14:16:29.6196983Z   draft: false
+2026-04-15T14:16:29.6197178Z   prerelease: false
+2026-04-15T14:16:29.6197379Z env:
+2026-04-15T14:16:29.6197838Z   GITHUB_TOKEN: ***
+2026-04-15T14:16:29.6198071Z ##[endgroup]
+2026-04-15T14:16:29.9349589Z ##[error]Resource not accessible by integration
+2026-04-15T14:16:29.9440942Z ##[group]Run if [ "failure" == "success" ]; then
+2026-04-15T14:16:29.9441322Z [36;1mif [ "failure" == "success" ]; then[0m
+2026-04-15T14:16:29.9441629Z [36;1m  echo "✅ Release created successfully!"[0m
+2026-04-15T14:16:29.9441929Z [36;1melse[0m
+2026-04-15T14:16:29.9442345Z [36;1m  echo "⚠️ Release step skipped or failed. This is OK - APK is still available in artifacts."[0m
+2026-04-15T14:16:29.9442984Z [36;1m  echo "To enable releases, add GITHUB_TOKEN secret with 'repo' and 'workflow' permissions."[0m
+2026-04-15T14:16:29.9443400Z [36;1mfi[0m
+2026-04-15T14:16:29.9465307Z shell: /usr/bin/bash -e {0}
+2026-04-15T14:16:29.9465559Z ##[endgroup]
+2026-04-15T14:16:29.9507936Z ⚠️ Release step skipped or failed. This is OK - APK is still available in artifacts.
+2026-04-15T14:16:29.9508672Z To enable releases, add GITHUB_TOKEN secret with 'repo' and 'workflow' permissions.
+2026-04-15T14:16:29.9582635Z Post job cleanup.
+2026-04-15T14:16:30.0519244Z [command]/usr/bin/git version
+2026-04-15T14:16:30.0556683Z git version 2.53.0
+2026-04-15T14:16:30.0599950Z Temporarily overriding HOME='/home/runner/work/_temp/1975c867-d9f4-4f34-be3c-f3d7c9f92105' before making global git config changes
+2026-04-15T14:16:30.0601163Z Adding repository directory to the temporary git global config as a safe directory
+2026-04-15T14:16:30.0616073Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/TaskTracker-MVP/TaskTracker-MVP
+2026-04-15T14:16:30.0651442Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+2026-04-15T14:16:30.0685113Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2026-04-15T14:16:30.0943069Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2026-04-15T14:16:30.0966550Z http.https://github.com/.extraheader
+2026-04-15T14:16:30.0978463Z [command]/usr/bin/git config --local --unset-all http.https://github.com/.extraheader
+2026-04-15T14:16:30.1009544Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2026-04-15T14:16:30.1259282Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+2026-04-15T14:16:30.1290476Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+2026-04-15T14:16:30.1652705Z Cleaning up orphan processes
+2026-04-15T14:16:30.1943621Z ##[warning]Node.js 20 actions are deprecated. The following actions are running on Node.js 20 and may not work as expected: actions/checkout@v4, actions/create-release@v1, actions/download-artifact@v4. Actions will be forced to run with Node.js 24 by default starting June 2nd, 2026. Node.js 20 will be removed from the runner on September 16th, 2026. Please check if updated versions of these actions are available that support Node.js 24. To opt into Node.js 24 now, set the FORCE_JAVASCRIPT_ACTIONS_TO_NODE24=true environment variable on the runner or in your workflow file. Once Node.js 24 becomes the default, you can temporarily opt out by setting ACTIONS_ALLOW_USE_UNSECURE_NODE_VERSION=true. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/
