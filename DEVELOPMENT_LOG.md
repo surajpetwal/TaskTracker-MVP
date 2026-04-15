@@ -107,5 +107,42 @@ See `APK_SIGNING.md` for information on APK signing and installation.
 
 ---
 
+## 🚀 Future Development Plans
+
+### Phase 1: UI Foundation (Days 10-12) - In Progress
+- ✅ **Day 10: Spacing, Colors, Rounded Corners** - Complete
+  - Consistent spacing system (4dp, 8dp, 16dp, 24dp, 32dp, 48dp)
+  - Modern dashboard color palette (#FF6A3D primary)
+  - Rounded corners (16dp) and elevation system
+  - **Jetpack Compose Integration** - Task item UI converted to Compose
+- 🔄 **Day 11: Component Refactoring** - Next
+  - Extract reusable UI patterns (Task item, Stats cards, Indicators)
+  - Create custom views or reusable layouts
+- ⏳ **Day 12: Visual Effects** - Pending
+  - Glassmorphism effects with transparency
+  - Soft gradients and modern shadows
+  - Enhanced visual depth
+
+### Phase 2: Gradual Compose Integration (Days 13-15)
+- ✅ **Day 13: First Compose Component** - Task item UI converted to Compose
+- **Day 14: Compose Cards & Metrics** - Convert stats cards to Compose
+- **Day 15: Mixed Architecture** - Run Compose alongside XML layouts
+
+### Phase 3: Selective Migration (Days 16-18)
+- **Day 16: RecyclerView Migration** - Convert to LazyColumn with Compose
+- **Day 17: First Screen Migration** - Convert ONE fragment to full Compose
+- **Day 18: Architecture Cleanup** - Remove unused XML, consolidate components
+
+### 🎯 End Goal
+Transform from Fragment + Adapter based app to fully Compose-based modern UI with glassmorphism design, maintaining all existing functionality.
+
+### 📋 Technical Strategy
+- **Incremental approach** - Small, testable changes
+- **Hybrid architecture** - XML + Compose coexistence
+- **Backward compatibility** - No breaking changes
+- **Modern design system** - Material3 + custom theming
+
+---
+
 ## GitHub Actions
 Builds are triggered on push to day branches. Check Actions tab for build status.
