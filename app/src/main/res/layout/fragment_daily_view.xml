@@ -4,120 +4,230 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="16dp"
+    android:background="@color/background_primary"
+    android:padding="@dimen/spacing_md"
     tools:context=".ui.DailyViewFragment">
 
-    <TextView
-        android:id="@+id/tvDate"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Today"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <!-- Missed Tasks Indicator (Red Circles) -->
+    <!-- Top Section: Greeting + Summary Card -->
     <LinearLayout
-        android:id="@+id/layoutMissedIndicator"
-        android:layout_width="wrap_content"
+        android:id="@+id/topSection"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:gravity="center"
-        android:layout_marginTop="4dp"
-        android:visibility="gone"
+        android:orientation="vertical"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tvDate">
+        app:layout_constraintTop_toTopOf="parent">
 
+        <!-- Greeting / Date -->
         <TextView
+            android:id="@+id/tvGreeting"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Missed: "
-            android:textSize="12sp"
-            android:textColor="@color/task_missed" />
+            android:text="Good Morning!"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            android:textColor="@color/text_primary"
+            android:layout_marginBottom="@dimen/spacing_xs" />
 
-        <com.surajpetwal.tasktracker.ui.MissedTasksIndicator
-            android:id="@+id/missedTasksIndicator"
+        <TextView
+            android:id="@+id/tvDate"
             android:layout_width="wrap_content"
-            android:layout_height="24dp"
-            android:layout_marginStart="4dp" />
+            android:layout_height="wrap_content"
+            android:text="Today"
+            android:textSize="14sp"
+            android:textColor="@color/text_secondary"
+            android:layout_marginBottom="@dimen/spacing_md" />
+
+        <!-- Summary Card (Progress, Quote, Score) -->
+        <include
+            android:id="@+id/summaryCard"
+            layout="@layout/view_summary_card"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
 
     </LinearLayout>
 
-    <TextView
-        android:id="@+id/tvTaskCount"
-        android:layout_width="wrap_content"
+    <!-- Stats Row: Small cards (tasks done, streak, points) -->
+    <LinearLayout
+        android:id="@+id/statsRow"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="0/0 tasks completed"
-        android:textSize="16sp"
-        android:layout_marginTop="@dimen/spacing_sm"
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:layout_marginTop="@dimen/spacing_md"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/layoutMissedIndicator" />
+        app:layout_constraintTop_toBottomOf="@id/topSection">
 
-    <TextView
-        android:id="@+id/tvPoints"
-        android:layout_width="wrap_content"
+        <include
+            android:id="@+id/tasksCompletedCard"
+            layout="@layout/view_stats_card"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_marginEnd="@dimen/spacing_sm" />
+
+        <include
+            android:id="@+id/streakCard"
+            layout="@layout/view_stats_card"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_marginStart="@dimen/spacing_sm"
+            android:layout_marginEnd="@dimen/spacing_sm" />
+
+        <include
+            android:id="@+id/pointsCard"
+            layout="@layout/view_stats_card"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_marginStart="@dimen/spacing_sm" />
+
+    </LinearLayout>
+
+    <!-- Category Filter Row: Horizontal scroll chips (pill style) -->
+    <androidx.compose.ui.platform.ComposeView
+        android:id="@+id/categoryFilterRow"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="0 points today"
-        android:textSize="16sp"
-        android:textColor="@color/accent"
-        android:layout_marginTop="4dp"
+        android:layout_marginTop="@dimen/spacing_md"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tvTaskCount" />
+        app:layout_constraintTop_toBottomOf="@id/statsRow" />
 
+    <!-- Main Task List: Card-based tasks (glass cards) -->
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rvTasks"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_marginTop="16dp"
-        app:layout_constraintBottom_toTopOf="@id/layoutUpcoming"
+        android:layout_marginTop="@dimen/spacing_md"
+        app:layout_constraintBottom_toTopOf="@id/bottomNavigation"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tvPoints" />
+        app:layout_constraintTop_toBottomOf="@id/categoryFilterRow" />
 
-    <!-- Upcoming Tasks Section -->
+    <!-- Bottom Navigation: Icons (Home / Stats / Calendar / Profile) -->
     <LinearLayout
-        android:id="@+id/layoutUpcoming"
+        android:id="@+id/bottomNavigation"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:layout_marginTop="@dimen/spacing_sm"
-        android:layout_marginBottom="8dp"
+        android:orientation="horizontal"
+        android:background="@color/glass_surface"
+        android:padding="@dimen/spacing_md"
+        android:layout_marginBottom="@dimen/spacing_md"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent">
 
-        <TextView
-            android:layout_width="wrap_content"
+        <!-- Home Icon -->
+        <LinearLayout
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:text="Upcoming Days"
-            android:textSize="14sp"
-            android:textStyle="bold"
-            android:layout_marginStart="4dp"
-            android:layout_marginBottom="4dp" />
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:gravity="center">
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rvUpcomingTasks"
-            android:layout_width="match_parent"
+            <ImageView
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:src="@drawable/ic_home"
+                android:tint="@color/primary" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Home"
+                android:textSize="10sp"
+                android:textColor="@color/text_primary"
+                android:layout_marginTop="@dimen/spacing_xs" />
+
+        </LinearLayout>
+
+        <!-- Stats Icon -->
+        <LinearLayout
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:scrollbars="none" />
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:gravity="center">
+
+            <ImageView
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:src="@drawable/ic_stats"
+                android:tint="@color/text_secondary" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Stats"
+                android:textSize="10sp"
+                android:textColor="@color/text_secondary"
+                android:layout_marginTop="@dimen/spacing_xs" />
+
+        </LinearLayout>
+
+        <!-- Calendar Icon -->
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:gravity="center">
+
+            <ImageView
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:src="@drawable/ic_calendar"
+                android:tint="@color/text_secondary" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Calendar"
+                android:textSize="10sp"
+                android:textColor="@color/text_secondary"
+                android:layout_marginTop="@dimen/spacing_xs" />
+
+        </LinearLayout>
+
+        <!-- Profile Icon -->
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:gravity="center">
+
+            <ImageView
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:src="@drawable/ic_profile"
+                android:tint="@color/text_secondary" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Profile"
+                android:textSize="10sp"
+                android:textColor="@color/text_secondary"
+                android:layout_marginTop="@dimen/spacing_xs" />
+
+        </LinearLayout>
 
     </LinearLayout>
 
+    <!-- FAB for adding tasks -->
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/fabAddTask"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:src="@drawable/ic_add"
         android:contentDescription="Add new task"
-        app:layout_constraintBottom_toTopOf="@id/layoutUpcoming"
+        app:layout_constraintBottom_toTopOf="@id/bottomNavigation"
         app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginEnd="16dp"
-        android:layout_marginBottom="16dp" />
+        android:layout_marginEnd="@dimen/spacing_md"
+        android:layout_marginBottom="@dimen/spacing_md" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -56,7 +56,7 @@ class DailyViewFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.fragment_daily_view_new, container, false)
+        return inflater.inflate(R.layout.fragment_daily_view, container, false)
     }
     
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
