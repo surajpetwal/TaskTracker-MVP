@@ -1,22 +1,37 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <!-- Day 10: Modern Dashboard Color System -->
+    <!-- Modern Dashboard Theme: Peach → Coral → Red Gradient -->
+    <!-- Primary Gradient Colors -->
+    <color name="gradient_start">#FFE0F7FA</color> <!-- Light Peach -->
+    <color name="gradient_middle">#FFFFCCBC</color> <!-- Coral -->
+    <color name="gradient_end">#FFEF9A9A</color> <!-- Soft Red -->
+    
     <!-- Primary Colors -->
     <color name="primary">#FF6A3D</color>
     <color name="primary_dark">#FF5722</color>
     <color name="primary_light">#FF8A65</color>
     
     <!-- Background Colors -->
-    <color name="background_primary">#FF0F172A</color>
+    <color name="background_primary">#FF0F172A</color> <!-- Dark background -->
     <color name="background_secondary">#FF1E293B</color>
-    <color name="background_surface">#BFFFFFFF</color>
-    <color name="background_card">#E6FFFFFF</color>
+    <color name="background_gradient_start">#FFE0F7FA</color>
+    <color name="background_gradient_end">#FFEF9A9A</color>
     
-    <!-- Text Colors -->
+    <!-- Glassmorphism Surface Colors -->
+    <color name="glass_surface">#33FFFFFF</color> <!-- 20% transparent white -->
+    <color name="glass_surface_light">#4DFFFFFF</color> <!-- 30% transparent white -->
+    <color name="glass_surface_dark">#26FFFFFF</color> <!-- 15% transparent white -->
+    
+    <!-- Card Colors -->
+    <color name="card_background">#4DFFFFFF</color> <!-- 30% transparent -->
+    <color name="card_background_hover">#66FFFFFF</color> <!-- 40% transparent -->
+    
+    <!-- Text Colors (for dark backgrounds) -->
     <color name="text_primary">#FFFFFFFF</color>
     <color name="text_secondary">#B3FFFFFF</color>
     <color name="text_hint">#80FFFFFF</color>
     <color name="text_on_primary">#FFFFFFFF</color>
+    <color name="text_on_glass">#FFFFFFFF</color>
     
     <!-- Status Colors -->
     <color name="success">#FF4CAF50</color>
@@ -37,7 +52,7 @@
     <color name="task_missed">#FFF44336</color>
     <color name="task_pending">#FFFF9800</color>
     
-    <!-- Day 9: Category Colors (Updated for better contrast) -->
+    <!-- Category Colors (Updated for glassmorphism) -->
     <color name="category_general">#FF9E9E9E</color>
     <color name="category_work">#FF2196F3</color>
     <color name="category_personal">#FF9C27B0</color>

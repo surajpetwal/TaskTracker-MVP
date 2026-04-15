@@ -9,7 +9,7 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.surajpetwal.tasktracker.R
 import com.surajpetwal.tasktracker.model.Task
-import com.surajpetwal.tasktracker.ui.compose.TaskItemCompose
+import com.surajpetwal.tasktracker.ui.compose.TaskCard
 
 class TaskAdapter(
     private val onTaskClick: (Task) -> Unit
@@ -36,7 +36,7 @@ class TaskAdapter(
 
         fun bind(task: Task) {
             composeView.setContent {
-                TaskItemCompose(
+                TaskCard(
                     task = task,
                     onTaskClick = onTaskClick
                 )
