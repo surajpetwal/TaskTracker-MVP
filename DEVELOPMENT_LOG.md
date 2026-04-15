@@ -60,6 +60,7 @@ This document tracks all development progress across all branches.
 - `0bf210f` - Day 9: Add category selection UI and CategoryManager
 - `3548cd8` - Day 9: Add category chip display to task items
 - `eb4a4d8` - Day 9: Add feature summary documentation
+- `a610370` - Day 9: Add category filter chips to Daily View with filtering logic
 
 ### Pending Work:
 - Test build on GitHub Actions
