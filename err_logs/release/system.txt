@@ -1,9 +1,0 @@
-2026-04-12T00:09:14.7910000Z Requested labels: ubuntu-latest
-2026-04-12T00:09:14.7910000Z Job defined at: surajpetwal/TaskTracker-MVP/.github/workflows/build.yml@refs/heads/day-3-crud
-2026-04-12T00:09:14.7910000Z Waiting for a runner to pick up this job...
-2026-04-12T00:09:14.7870000Z Evaluating release.if
-2026-04-12T00:09:14.7870000Z Evaluating: (success() && (((github.ref == 'refs/heads/main') || (github.ref == 'refs/heads/master') || (github.ref == 'refs/heads/day-3-crud'))))
-2026-04-12T00:09:14.7870000Z Expanded: (true && (('refs/heads/day-3-crud' == 'refs/heads/main') || ('refs/heads/day-3-crud' == 'refs/heads/master') || ('refs/heads/day-3-crud' == 'refs/heads/day-3-crud')))
-2026-04-12T00:09:14.7870000Z Result: true
-2026-04-12T00:09:15.2740000Z Job is about to start running on the hosted runner: GitHub Actions 1000000020
-2026-04-12T00:09:15.2730000Z Job is waiting for a hosted runner to come online.
