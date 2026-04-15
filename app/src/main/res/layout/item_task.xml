@@ -44,6 +44,16 @@
                 android:textColor="@android:color/darker_gray"
                 tools:text="Task description here" />
 
+            <!-- Day 9: Category Chip -->
+            <com.google.android.material.chip.Chip
+                android:id="@+id/chipCategory"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:textSize="10sp"
+                app:chipMinHeight="24dp"
+                tools:text="Work" />
+
         </LinearLayout>
 
         <TextView

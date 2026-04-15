@@ -8,8 +8,10 @@ import android.widget.TextView
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
+import com.google.android.material.chip.Chip
 import com.surajpetwal.tasktracker.R
 import com.surajpetwal.tasktracker.model.Task
+import com.surajpetwal.tasktracker.utils.CategoryManager
 
 class TaskAdapter(
     private val onTaskClick: (Task) -> Unit
@@ -36,12 +38,18 @@ class TaskAdapter(
         private val tvTitle: TextView = itemView.findViewById(R.id.tvTitle)
         private val tvDescription: TextView = itemView.findViewById(R.id.tvDescription)
         private val tvPoints: TextView = itemView.findViewById(R.id.tvPoints)
+        private val chipCategory: Chip = itemView.findViewById(R.id.chipCategory)
 
         fun bind(task: Task) {
             cbCompleted.isChecked = task.isCompleted
             tvTitle.text = task.title
             tvDescription.text = task.description ?: ""
             tvPoints.text = "${task.points} pts"
+            
+            // Day 9: Set category chip
+            chipCategory.text = task.category
+            val categoryColor = CategoryManager.getCategoryColor(itemView.context, task.category)
+            chipCategory.setChipBackgroundColorResource(CategoryManager.DEFAULT_CATEGORIES[task.category] ?: R.color.category_general)
             
             // Set text appearance based on completion status
             if (task.isCompleted) {
