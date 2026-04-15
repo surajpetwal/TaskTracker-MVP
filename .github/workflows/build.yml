@@ -2,7 +2,7 @@ name: Build and Release APK
 
 on:
   push:
-    branches: [ main, master, day-3-crud ]
+    branches: [ main, master, day-3-crud, day-8-notifications, day-9-categories, day-10-export ]
   pull_request:
     branches: [ main, master ]
   workflow_dispatch:
@@ -43,6 +43,13 @@ jobs:
     - name: Accept Android SDK licenses
       run: yes | sdkmanager --licenses || true
 
+    - name: Generate Debug Keystore
+      run: |
+        mkdir -p ~/.android
+        if [ ! -f ~/.android/debug.keystore ]; then
+          keytool -genkey -v -keystore ~/.android/debug.keystore -storepass android -alias androiddebugkey -keypass android -keyalg RSA -keysize 2048 -validity 10000 -dname "CN=Android Debug,O=Android,C=US"
+        fi
+
     - name: Build Debug APK
       run: ./gradlew assembleDebug
 
@@ -59,12 +66,12 @@ jobs:
       uses: actions/upload-artifact@v4
       with:
         name: release-apk
-        path: app/build/outputs/apk/release/app-release-unsigned.apk
+        path: app/build/outputs/apk/release/app-release.apk
 
   release:
     needs: build
     runs-on: ubuntu-latest
-    if: github.ref == 'refs/heads/main' || github.ref == 'refs/heads/master' || github.ref == 'refs/heads/day-3-crud'
+    if: github.ref == 'refs/heads/main' || github.ref == 'refs/heads/master' || github.ref == 'refs/heads/day-3-crud' || github.ref == 'refs/heads/day-9-categories'
 
     steps:
     - uses: actions/checkout@v4
@@ -113,7 +120,7 @@ jobs:
       continue-on-error: true
       with:
         upload_url: ${{ steps.create_release.outputs.upload_url }}
-        asset_path: ./apk/app-release-unsigned.apk
+        asset_path: ./apk/app-release.apk
         asset_name: task-tracker-${{ steps.date.outputs.date }}.apk
         asset_content_type: application/vnd.android.package-archive
 
