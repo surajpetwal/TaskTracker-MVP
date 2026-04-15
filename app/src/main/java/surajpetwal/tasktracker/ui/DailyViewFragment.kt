@@ -8,6 +8,7 @@ import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
+import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import java.text.SimpleDateFormat
@@ -90,6 +91,9 @@ class DailyViewFragment : Fragment() {
             adapter = taskAdapter
         }
         
+        // Setup swipe actions
+        setupSwipeActions()
+        
         // Setup upcoming tasks RecyclerView
         upcomingTasksAdapter = UpcomingTasksAdapter()
         rvUpcomingTasks.apply {
@@ -153,6 +157,44 @@ class DailyViewFragment : Fragment() {
         }
         
         upcomingTasksAdapter.submitList(upcomingDays)
+    }
+    
+    private fun setupSwipeActions() {
+        val swipeCallback = object : TaskSwipeCallback() {
+            override fun onSwipedRight(position: Int) {
+                // Complete task
+                val task = taskAdapter.getTaskAt(position)
+                if (task != null && !task.isCompleted) {
+                    lifecycleScope.launch {
+                        try {
+                            val updatedTask = task.copy(isCompleted = true)
+                            taskRepository.updateTask(updatedTask)
+                            loadTodayTasks()
+                        } catch (e: Exception) {
+                            e.printStackTrace()
+                        }
+                    }
+                }
+            }
+
+            override fun onSwipedLeft(position: Int) {
+                // Delete task
+                val task = taskAdapter.getTaskAt(position)
+                if (task != null) {
+                    lifecycleScope.launch {
+                        try {
+                            taskRepository.deleteTask(task.id)
+                            loadTodayTasks()
+                        } catch (e: Exception) {
+                            e.printStackTrace()
+                        }
+                    }
+                }
+            }
+        }
+
+        val itemTouchHelper = ItemTouchHelper(swipeCallback)
+        itemTouchHelper.attachToRecyclerView(rvTasks)
     }
     
     private fun toggleTaskCompletion(task: com.surajpetwal.tasktracker.model.Task) {

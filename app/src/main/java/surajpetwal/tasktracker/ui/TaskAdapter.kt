@@ -25,6 +25,12 @@ class TaskAdapter(
         holder.bind(getItem(position))
     }
 
+    fun getTaskAt(position: Int): Task? {
+        return if (position in 0 until itemCount) {
+            getItem(position)
+        } else null
+    }
+
     inner class TaskViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         private val cbCompleted: CheckBox = itemView.findViewById(R.id.cbCompleted)
         private val tvTitle: TextView = itemView.findViewById(R.id.tvTitle)
