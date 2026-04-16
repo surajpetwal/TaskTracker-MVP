@@ -2,7 +2,7 @@ name: Build and Release APK
 
 on:
   push:
-    branches: [ main, master, day-3-crud ]
+    branches: [ main, master, day-3-crud, day-10-ui-foundation ]
   pull_request:
     branches: [ main, master ]
   workflow_dispatch:
