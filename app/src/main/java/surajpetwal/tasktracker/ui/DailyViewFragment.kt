@@ -6,7 +6,12 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.LinearLayout
 import android.widget.TextView
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.horizontalScroll
+import androidx.compose.foundation.layout.ScrollState
 import androidx.compose.ui.platform.ComposeView
+import androidx.compose.ui.unit.dp
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.ItemTouchHelper
@@ -166,9 +171,9 @@ class DailyViewFragment : Fragment() {
         // Setup swipe actions
         setupSwipeActions()
         
-        // Setup upcoming tasks RecyclerView
+        // Setup upcoming tasks RecyclerView (only if view exists)
         upcomingTasksAdapter = UpcomingTasksAdapter()
-        rvUpcomingTasks.apply {
+        rvUpcomingTasks?.apply {
             layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
             adapter = upcomingTasksAdapter
         }
