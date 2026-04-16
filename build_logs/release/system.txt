@@ -1,0 +1,4 @@
+2026-04-15T23:32:53.1320000Z Evaluating release.if
+2026-04-15T23:32:53.1320000Z Evaluating: (success() && (((github.ref == 'refs/heads/main') || (github.ref == 'refs/heads/master') || (github.ref == 'refs/heads/day-3-crud'))))
+2026-04-15T23:32:53.1320000Z Expanded: (false && ((github.ref == 'refs/heads/main') || (github.ref == 'refs/heads/master') || (github.ref == 'refs/heads/day-3-crud')))
+2026-04-15T23:32:53.1320000Z Result: false

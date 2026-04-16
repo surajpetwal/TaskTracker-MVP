@@ -76,12 +76,12 @@ class DailyViewFragment : Fragment() {
         rvTasks = view.findViewById(R.id.rvTasks)
         fabAddTask = view.findViewById(R.id.fabAddTask)
         
-        // Compose views
-        summaryCardView = view.findViewById(R.id.summaryCard).findViewById(R.id.composeView)
-        tasksCompletedCardView = view.findViewById(R.id.tasksCompletedCard).findViewById(R.id.composeView)
-        streakCardView = view.findViewById(R.id.streakCard).findViewById(R.id.composeView)
-        pointsCardView = view.findViewById(R.id.pointsCard).findViewById(R.id.composeView)
-        categoryFilterRowView = view.findViewById(R.id.categoryFilterRow)
+        // Compose views - make them optional to prevent build failures
+    summaryCardView = view.findViewById<View>(R.id.summaryCard)?.findViewById(R.id.composeView)
+    tasksCompletedCardView = view.findViewById<View>(R.id.tasksCompletedCard)?.findViewById(R.id.composeView)
+    streakCardView = view.findViewById<View>(R.id.streakCard)?.findViewById(R.id.composeView)
+    pointsCardView = view.findViewById<View>(R.id.pointsCard)?.findViewById(R.id.composeView)
+    categoryFilterRowView = view.findViewById(R.id.categoryFilterRow)
         
         // Legacy views (for backward compatibility - may not exist in new layout)
         layoutMissedIndicator = view.findViewById(R.id.layoutMissedIndicator)

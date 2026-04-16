@@ -4,7 +4,7 @@
 # Usage: ./fetch_build_logs.sh [GITHUB_TOKEN]
 
 REPO="surajpetwal/TaskTracker-MVP"
-BRANCH="day-3-crud"
+BRANCH="day-10-ui-foundation"
 TOKEN="$1"
 
 if [ -z "$TOKEN" ]; then
