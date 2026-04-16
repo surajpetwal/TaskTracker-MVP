@@ -35,18 +35,18 @@ class DailyViewFragment : Fragment() {
     private lateinit var fabAddTask: FloatingActionButton
     private lateinit var taskAdapter: TaskAdapter
     
-    // Compose views
-    private lateinit var summaryCardView: ComposeView
-    private lateinit var tasksCompletedCardView: ComposeView
-    private lateinit var streakCardView: ComposeView
-    private lateinit var pointsCardView: ComposeView
-    private lateinit var categoryFilterRowView: ComposeView
+    // Compose views - nullable to handle optional UI elements
+    private var summaryCardView: ComposeView? = null
+    private var tasksCompletedCardView: ComposeView? = null
+    private var streakCardView: ComposeView? = null
+    private var pointsCardView: ComposeView? = null
+    private var categoryFilterRowView: ComposeView? = null
     
-    // Legacy views (for backward compatibility)
-    private lateinit var layoutMissedIndicator: LinearLayout
-    private lateinit var missedTasksIndicator: MissedTasksIndicator
-    private lateinit var rvUpcomingTasks: RecyclerView
-    private lateinit var upcomingTasksAdapter: UpcomingTasksAdapter
+    // Legacy views (nullable for backward compatibility)
+    private var layoutMissedIndicator: LinearLayout? = null
+    private var missedTasksIndicator: MissedTasksIndicator? = null
+    private var rvUpcomingTasks: RecyclerView? = null
+    private var upcomingTasksAdapter: UpcomingTasksAdapter? = null
     
     // Category filter state
     private var selectedCategory: String? = null
@@ -76,17 +76,17 @@ class DailyViewFragment : Fragment() {
         rvTasks = view.findViewById(R.id.rvTasks)
         fabAddTask = view.findViewById(R.id.fabAddTask)
         
-        // Compose views - make them optional to prevent build failures
-    summaryCardView = view.findViewById<View>(R.id.summaryCard)?.findViewById(R.id.composeView)
-    tasksCompletedCardView = view.findViewById<View>(R.id.tasksCompletedCard)?.findViewById(R.id.composeView)
-    streakCardView = view.findViewById<View>(R.id.streakCard)?.findViewById(R.id.composeView)
-    pointsCardView = view.findViewById<View>(R.id.pointsCard)?.findViewById(R.id.composeView)
-    categoryFilterRowView = view.findViewById(R.id.categoryFilterRow)
+        // Compose views - safely find optional views
+        summaryCardView = view.findViewById<View>(R.id.summaryCard)?.findViewById<ComposeView>(R.id.composeView)
+        tasksCompletedCardView = view.findViewById<View>(R.id.tasksCompletedCard)?.findViewById<ComposeView>(R.id.composeView)
+        streakCardView = view.findViewById<View>(R.id.streakCard)?.findViewById<ComposeView>(R.id.composeView)
+        pointsCardView = view.findViewById<View>(R.id.pointsCard)?.findViewById<ComposeView>(R.id.composeView)
+        categoryFilterRowView = view.findViewById<ComposeView>(R.id.categoryFilterRow)
         
-        // Legacy views (for backward compatibility - may not exist in new layout)
-        layoutMissedIndicator = view.findViewById(R.id.layoutMissedIndicator)
-        missedTasksIndicator = view.findViewById(R.id.missedTasksIndicator)
-        rvUpcomingTasks = view.findViewById(R.id.rvUpcomingTasks)
+        // Legacy views (nullable - may not exist in new layout)
+        layoutMissedIndicator = view.findViewById<LinearLayout>(R.id.layoutMissedIndicator)
+        missedTasksIndicator = view.findViewById<MissedTasksIndicator>(R.id.missedTasksIndicator)
+        rvUpcomingTasks = view.findViewById<RecyclerView>(R.id.rvUpcomingTasks)
         
         // Set greeting and current date
         val hour = java.util.Calendar.getInstance().get(java.util.Calendar.HOUR_OF_DAY)
@@ -120,7 +120,7 @@ class DailyViewFragment : Fragment() {
     
     private fun setupComposeComponents() {
         // Setup category filter row with horizontal scroll
-        categoryFilterRowView.setContent {
+        categoryFilterRowView?.setContent {
             androidx.compose.foundation.layout.Row(
                 modifier = androidx.compose.ui.Modifier
                     .fillMaxWidth()
@@ -193,7 +193,7 @@ class DailyViewFragment : Fragment() {
                 }
                 
                 // Update Compose components
-                summaryCardView.setContent {
+                summaryCardView?.setContent {
                     SummaryCard(
                         progress = progress,
                         quote = "Keep going! You're doing great!",
@@ -201,20 +201,20 @@ class DailyViewFragment : Fragment() {
                     )
                 }
                 
-                tasksCompletedCardView.setContent {
+                tasksCompletedCardView?.setContent {
                     TasksCompletedCard(
                         completedTasks = completedTasks.size,
                         totalTasks = todayTasks.size
                     )
                 }
                 
-                streakCardView.setContent {
+                streakCardView?.setContent {
                     StreakCard(
                         streak = getStreak() // Calculate streak
                     )
                 }
                 
-                pointsCardView.setContent {
+                pointsCardView?.setContent {
                     PointsCard(
                         points = todayPoints
                     )
@@ -222,13 +222,15 @@ class DailyViewFragment : Fragment() {
                 
                 taskAdapter.submitList(todayTasks)
                 
-                // Load and display missed tasks count
+                // Load and display missed tasks count (only if views exist)
                 val missedTasks = taskRepository.getMissedTasks()
-                if (missedTasks.isNotEmpty()) {
-                    layoutMissedIndicator.visibility = View.VISIBLE
-                    missedTasksIndicator.setMissedCount(missedTasks.size)
-                } else {
-                    layoutMissedIndicator.visibility = View.GONE
+                layoutMissedIndicator?.let { indicator ->
+                    if (missedTasks.isNotEmpty()) {
+                        indicator.visibility = View.VISIBLE
+                        missedTasksIndicator?.setMissedCount(missedTasks.size)
+                    } else {
+                        indicator.visibility = View.GONE
+                    }
                 }
                 
                 // Load upcoming tasks
@@ -269,7 +271,7 @@ class DailyViewFragment : Fragment() {
             }
         }
         
-        upcomingTasksAdapter.submitList(upcomingDays)
+        upcomingTasksAdapter?.submitList(upcomingDays)
     }
     
     private fun setupSwipeActions() {
