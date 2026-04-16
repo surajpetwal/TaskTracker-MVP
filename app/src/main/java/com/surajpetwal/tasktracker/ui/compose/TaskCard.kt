@@ -6,7 +6,7 @@ import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.CheckCircle
-import androidx.compose.material.icons.filled.CheckCircleOutline
+import androidx.compose.material.icons.outlined.CheckCircle
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
@@ -81,7 +81,7 @@ fun TaskCard(
                     imageVector = if (task.isCompleted) {
                         Icons.Default.CheckCircle
                     } else {
-                        Icons.Default.CheckCircleOutline
+                        Icons.Outlined.CheckCircle
                     },
                     contentDescription = if (task.isCompleted) "Completed" else "Not completed",
                     tint = if (task.isCompleted) {
